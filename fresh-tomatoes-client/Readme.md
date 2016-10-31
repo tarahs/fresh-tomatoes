@@ -36,4 +36,4 @@ restart nginx after the above configuraiton changes
 sudo nginx -s reload
 ```
 load the UI from the browser
-``` https://localhost:8081 ```
+``` http://localhost:8081 ```
