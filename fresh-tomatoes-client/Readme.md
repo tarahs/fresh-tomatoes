@@ -23,7 +23,6 @@ server{
         location    /api/ {
             expires -1;
             proxy_pass http://127.0.0.1:8080/fresh-tomatoes/api/v1/; # URL where the server app runs
-            proxy_read_timeout 1800s;
         }
         location / {
             root /path/to/fresh-tomatoes-client;
