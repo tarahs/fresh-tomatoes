@@ -37,8 +37,8 @@
     </md-toolbar>
     <md-content flex="100" layout-padding layout="column" >
 
-        <div ng-if="searchKey" class="search-key" ng-class="{found:movies.length>0,notfound:(movies == null || movies.length==0)}" md-highlight-text="searchKey">
-            Searched for: {{searchKey}} - {{movies.length}} results found
+        <div ng-if="searchKey" class="search-key" ng-class="{found:movies.length>0,notfound:(movies == null || movies.length==0)}">
+            Searched for: <span class="highlight">{{searchKey}}</span> - {{movies.length}} results found
         </div>
 
 
