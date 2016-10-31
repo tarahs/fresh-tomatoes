@@ -9,11 +9,14 @@ clone the repository and navigate to the client's directory
     git clone https://github.com/tarahs/fresh-tomatoes.git
     cd fresh-tomatoes/fresh-tomatoes-client
   ```  
-The module includes a package.json which has all the dependencies needed. Install all packages by entering the command: 
+The module includes package.json which has all the dependencies needed. Install all packages by entering the command: 
 ```
 npm install
 ```
-
+The module includes gulpfile.js which has the gulp tasks configured to generate the distribution file. Run the following command inorder to generate the distribution files.
+```
+gulp
+```
 In order to run it on webserver, setup nginx with following configuration:
 
 ```
