@@ -1,0 +1,66 @@
+<html>
+<head>
+    <!-- Angular Material CSS using GitCDN to load directly from `bower-material/master` -->
+    <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="/node_modules/angular-material/angular-material.layouts.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <!-- Angular Material Dependencies -->
+    <!--<script src="/node_modules/jquery/dist/jquery.min.js"></script>-->
+    <script src="/node_modules/angular/angular.min.js"></script>
+    <script src="/node_modules/angular-messages/angular-messages.min.js"></script>
+    <script src="/node_modules/angular-animate/angular-animate.js"></script>
+    <script src="/node_modules/angular-aria/angular-aria.js"></script>
+    <script src="/node_modules/ng-infinite-scroll/build/ng-infinite-scroll.min.js"></script>
+    <!-- Angular Material Javascript using GitCDN to load directly from `bower-material/master` -->
+    <script src="/node_modules/angular-material/angular-material.js"></script>
+    <script type="text/javascript" src="dist/app.js"></script>
+    <style>
+    </style>
+</head>
+<body ng-app="fresh-tomatoes" ng-controller="MovieReviewController">
+    <md-toolbar>
+        <div class="md-toolbar-tools" layout="row">
+            <div layout="column"><h2 class="md-flex">Fresh Tomatoes</h2></div>
+            <div layout="column" flex="auto">
+                <div layout="row" layout-align="end center">
+                    <form ng-submit="getMovies()" class="movie-search-form">
+                        <md-input-container class="movie-search-container" md-no-float>
+
+                                <input ng-model="searchKey" placeholder="Search" ng-change="getMovies();">
+                                <md-icon ng-click="getMovies()" md-svg-src="/dist/images/ic_search_black_24px.svg" style="display:inline-block;"></md-icon>
+                        </md-input-container>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </md-toolbar>
+    <md-content flex="100" layout-padding layout="column" >
+
+        <div ng-if="searchKey" class="search-key" ng-class="{found:movies.length>0,notfound:(movies == null || movies.length==0)}" md-highlight-text="searchKey">
+            Searched for: {{searchKey}} - {{movies.length}} results found
+        </div>
+
+
+        <div layout="row" layout-padding layout-wrap ng-cloak infinite-scroll="nextPage()" infinite-scroll-distance="3">
+            <div ng-if="!searchKey && (movies == null || movies.length == 0)" flex="100" layout="column" layout-align="center center">
+                <h3>No movies available</h3>
+            </div>
+            <md-card ng-repeat="movie in movies">
+                <img ng-src="{{movie.url || '/dist/images/not_available.jpg'}}" class="md-card-image movie-list-image">
+                <div layout="column">
+                    <h5 class="movie-list-movie-title" ng-click="showMovieDetails($event, movie)" ><a href="#">{{movie.name | limitTo: 20}}{{movie.name.length > 20? '...':''}}</a></h5>
+                    <div layout="row" layout-align="end center" flex="auto">
+                        <div ng-repeat="n in ratings track by $index">
+                            <img ng-if="movie.ratings >= $index+1" ng-src="dist/images/ic_star_black_24px.svg">
+                            <img ng-if="movie.ratings < $index+1 && movie.ratings > $index" ng-src="dist/images/ic_star_half_black_24px.svg">
+                            <img ng-if="movie.ratings < $index+1 && movie.ratings <= $index" ng-src="dist/images/ic_star_border_black_24px.svg">
+                        </div>
+                    </div>
+                </div>
+            </md-card>
+        </div>
+    </md-content>
+</body>
+</html>
