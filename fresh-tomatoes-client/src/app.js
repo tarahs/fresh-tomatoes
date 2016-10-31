@@ -1,1 +1,1 @@
-var traderental = angular.module('fresh-tomatoes', ['ngMaterial','ngMessages','ng-infinite-scroll']);
+var traderental = angular.module('fresh-tomatoes', ['ngMaterial','ngMessages']);
