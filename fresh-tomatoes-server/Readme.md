@@ -8,10 +8,18 @@ fresh-tomatoes-server is an api for movie reviews which enables an ability to wr
 Java with Spring Boot
 
 ### Installation
-Prerequisites - Installation of Java 1.8, Maven and MySQL and Empty MySQL Schema
+Prerequisites - Installation of Java 1.8, Maven and MySQL 
 
-- Checkout the project "fresh-tomatoes-server" from the ________ repository
-- Navigate to checkedout project and configure the flowing properties in application.properties which can be found in fresh-tomatoes-server/src/main/resources/application.properties
+create a schema in mysql
+```CREATE SCHEMA `fresh_tomatoes` ```;
+
+
+Clone the repository of not cloned yet and navigate to server folder
+``` git clone https://github.com/tarahs/fresh-tomatoes.git ```
+
+Edit the application properties set appropriate DB propertes
+vi fresh-tomatoes-server/src/main/resources/application.properties
+
     - spring.datasource.url - Set MySQL server access URL with schema Name as jdbc:mysql://<MYSQL_SERVER_HOST>/<SCHEMA_NAME>?autoReconnect=true&useSSL=false
     - spring.datasource.username -- MySQL DB Username
     - spring.datasource.password -- MySQL DB Password
