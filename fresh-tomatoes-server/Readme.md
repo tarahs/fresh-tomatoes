@@ -16,8 +16,6 @@ Clone the repository if not cloned yet and navigate to fresh-tomatoes-server fol
 git clone https://github.com/tarahs/fresh-tomatoes.git 
 ```
 
-Edit the application properties set appropriate DB propertes
-
 Create schema and populate initial data by running the script in the db dump provided in location
 
 fresh-tomatoes-server/src/main/resources/db_dump.sql
@@ -25,9 +23,9 @@ fresh-tomatoes-server/src/main/resources/db_dump.sql
 ```
 vi fresh-tomatoes-server/src/main/resources/application.properties
 ```
-Edit the following properties
+Edit the application properties set appropriate DB & logging propertes
 ```
-spring.datasource.url=jdbc:mysql://127.0.0.1/fresh_tomatoes?autoReconnect=true&useSSL=false
+spring.datasource.url=jdbc:mysql://127.0.0.1/freshtomatoes?autoReconnect=true&useSSL=false
 spring.datasource.username=   # MySQL DB Username
 spring.datasource.password=  # MySQL DB Password
 logging.path=
