@@ -21,7 +21,8 @@ import com.slalom.repository.MovieRepository;
 import com.slalom.service.IMovieService;
 
 /**
- * Created by tara. Movie Management Services Implementation
+ * Created by tara.
+ * Movie Management Services Implementation
  */
 @Service
 public class MovieServiceImpl implements IMovieService {

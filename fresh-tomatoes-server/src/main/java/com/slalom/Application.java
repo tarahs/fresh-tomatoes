@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Created by tara. Class from where application run starts
+ * Created by tara.
+ * Class from where application run starts
  */
 @SpringBootApplication
 public class Application {

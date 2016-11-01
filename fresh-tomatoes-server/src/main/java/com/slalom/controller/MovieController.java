@@ -17,7 +17,8 @@ import com.slalom.controller.base.BaseController;
 import com.slalom.service.IMovieService;
 
 /**
- * Created by tara. Movie Controller for handling all requests related to Movie
+ * Created by tara.
+ * Movie Controller for handling all requests related to Movie
  */
 @Controller
 @RequestMapping( "/movies" )

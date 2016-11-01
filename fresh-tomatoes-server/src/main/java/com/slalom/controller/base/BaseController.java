@@ -10,7 +10,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.slalom.exception.ActionFailureException;
 
 /**
- * Created by tara. Base Controller which has build response implementation which can be
+ * Created by tara.
+ * Base Controller which has build response implementation which can be
  * inherited from all Controllers
  */
 public class BaseController {
