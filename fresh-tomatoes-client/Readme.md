@@ -39,3 +39,10 @@ sudo nginx -s reload
 ```
 load the UI from the browser
 ``` http://localhost:8081 ```
+
+
+## Client Capabilities
+  - View list of movies and ratings.
+  - Search movies by movie name.
+  - View movie details by cliking on movie name in horizontal list view.
+  - Offline Capability to perform the above functionalities.
