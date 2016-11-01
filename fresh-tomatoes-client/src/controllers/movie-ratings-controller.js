@@ -6,11 +6,10 @@ angular.module('fresh-tomatoes').controller('MovieReviewController',['$scope','M
     scope.getMovies = function(){
         movieRatingsService.getMovies(scope.searchKey,function(data, error){
 
-        if(error){
-            return;
-        }
-        scope.movies = data.content;
-
+            if(error){
+                return;
+            }
+            scope.movies = data.content;
         });
     };
 
