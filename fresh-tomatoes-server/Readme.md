@@ -1,5 +1,5 @@
-# fresh-tomatoes-server
-fresh-tomatoes-server is an api for movie reviews which enables an ability to write movies to database and read movies from a database based on the filter input.
+## fresh-tomatoes-server
+fresh-tomatoes-server is an api for movie reviews which enables an ability to write movies to database and read movies from a database based on the filter and pagination input.
 
 ### Version
 1.0
