@@ -7,8 +7,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.slalom.beans.Movie;
 
+import java.util.List;
+
 /**
  * Created by tara.
+ * Spring Data Repository which supported CRUD operations on Movie Entity
  */
 @Transactional
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
@@ -19,7 +22,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     @Override
     Movie findOne( Integer id );
 
-    Movie findByName( String name );
+    List<Movie> findByName( String name );
 
     Page<Movie> findByNameContaining( String name, Pageable pageRequest );
 

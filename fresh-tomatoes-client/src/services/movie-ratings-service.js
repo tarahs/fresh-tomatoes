@@ -5,7 +5,7 @@ angular.module('fresh-tomatoes').factory('MovieRatingsService',['$http','$window
     		getMovies : function(searchKey,callback){
     			$http({
                   method: 'GET',
-                  url: '/api/movies?searchKey='+searchKey
+                  url: '/api/movies?searchKey='+encodeURIComponent(searchKey)
                 }).then(function successCallback(response) {
                     if(!searchKey){
                         $window.localStorage.setItem('movies',JSON.stringify(response.data.data));

@@ -50,6 +50,8 @@ public class MovieServiceTest {
 
     Page<Movie> movies;
 
+    List<Movie> moviesList;
+
     @Before
     public void init()
     {
@@ -80,13 +82,13 @@ public class MovieServiceTest {
 
         Movie movie4 = mockMovie("Pitch Perfect 2", 3.0F, "http://resizing.flixster.com/CSaptdyboc7JUz266OumNJHeAl4=/180x257/dkpu1ddg7pbsk.cloudfront.net/movie/11/19/12/11191224_ori.jpg","Surprise hit Pitch Perfect gets sequelized in this Universal Pictures production once again scripted by Kay Cannon. ~ Jeremy Wheeler, Rovi");
 
-        List<Movie> content = new ArrayList<>();
-        content.add(movie1);
-        content.add(movie2);
-        content.add(movie3);
-        content.add(movie4);
+        moviesList = new ArrayList<>();
+        moviesList.add(movie1);
+        moviesList.add(movie2);
+        moviesList.add(movie3);
+        moviesList.add(movie4);
 
-        movies = new PageImpl<Movie>(content,null,content.size());
+        movies = new PageImpl<Movie>(moviesList,null,moviesList.size());
     }
 
     //--------    TEST CASES FOR ADD MOVIE    -----------
@@ -113,10 +115,12 @@ public class MovieServiceTest {
     public void addMovie_withDuplicateMovieName_throwBadRequestExceptionWithDuplicateErrorMessage()
             throws BadRequestException
     {
+
         expectedEx.expect(BadRequestException.class);
         expectedEx.expectMessage(ExceptionConstants.DUPLICATE_MOVIE);
 
-        when(movieRepository.findByName(anyString())).thenReturn(new Movie());
+        mockMovies();
+        when(movieRepository.findByName(anyString())).thenReturn(moviesList);
         movieService.addMovie(movie);
     }
 

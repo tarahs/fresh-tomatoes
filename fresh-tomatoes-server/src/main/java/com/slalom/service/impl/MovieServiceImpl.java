@@ -1,6 +1,7 @@
 package com.slalom.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import com.slalom.utils.Utils;
 import org.slf4j.Logger;
@@ -57,7 +58,9 @@ public class MovieServiceImpl implements IMovieService {
 
         movie.setName(movie.getName().trim());
 
-        if( movieRepository.findByName(movie.getName()) != null )
+        List<Movie> moviesWithSameName = movieRepository.findByName(movie.getName());
+
+        if( moviesWithSameName != null && moviesWithSameName.size() > 0 )
         {
             LOGGER.error(ExceptionConstants.MANDATORY_MOVIE_NAME);
             throw new BadRequestException(ExceptionConstants.DUPLICATE_MOVIE);
@@ -86,10 +89,14 @@ public class MovieServiceImpl implements IMovieService {
         PageRequest pageRequest = createPageRequest(page, size, sortBy, orderBy);
         Page<Movie> movies;
 
-        if( searchKey != null && !searchKey.isEmpty() )
+        if( searchKey != null && !searchKey.isEmpty() ){
+            searchKey = Utils.escapeWildCards(searchKey);
             movies = movieRepository.findByNameContaining(searchKey, pageRequest);
-        else
+        }
+        else{
             movies = movieRepository.findAll(pageRequest);
+        }
+
         LOGGER.info("Getting movies is successful");
 
         return movies;
@@ -103,7 +110,7 @@ public class MovieServiceImpl implements IMovieService {
      * @param size
      * @return
      */
-    public PageRequest createPageRequest( Integer page, Integer size, String sortBy, String orderBy )
+    private PageRequest createPageRequest( Integer page, Integer size, String sortBy, String orderBy )
     {
         Sort.Direction sortDirection;
 
@@ -133,7 +140,7 @@ public class MovieServiceImpl implements IMovieService {
      * @param sortBy
      * @return
      */
-    public boolean isValidateSortByColumn( String sortBy )
+    private boolean isValidateSortByColumn( String sortBy )
     {
         if( !Utils.isNullOrNullString(sortBy) && (sortBy.equals(Constants.MOVIE_NAME_COLUMN) || sortBy.equals(Constants.MOVIE_RATINGS_COLUMN)) )
             return true;
@@ -147,7 +154,7 @@ public class MovieServiceImpl implements IMovieService {
      * @param sortBy
      * @return
      */
-    public boolean isValidateOrderBy( String orderBy )
+    private boolean isValidateOrderBy( String orderBy )
     {
         if( !Utils.isNullOrNullString(orderBy) && (orderBy.equalsIgnoreCase(Constants.SORT_ASCENDING) || orderBy.equalsIgnoreCase(Constants.SORT_DESCENDING)) )
             return true;

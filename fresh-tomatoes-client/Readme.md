@@ -1,5 +1,9 @@
 # Fresh Tomatoes Client
-This module holds the client code related to the Fresh Tomatoes movie review app.   
+This module holds the client code related to the Fresh Tomatoes movie review app. 
+  
+## Technology and Framework
+AngularJs with Material design
+
 ## Prerequisites
 NodeJs, npm, nginx
 

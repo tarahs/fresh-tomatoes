@@ -14,4 +14,10 @@ public class Utils {
         return null == str || str.isEmpty() || "".equals(str.trim()) || "null".equals(str);
     }
 
+    public static String escapeWildCards(String str){
+        return str.replaceAll("%","\\\\%")
+                .replaceAll("_","\\\\_")
+                .replaceAll("\\\\","\\\\\\");
+    }
+
 }
