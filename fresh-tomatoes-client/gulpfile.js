@@ -9,7 +9,6 @@ var gulp = require('gulp'),
     connect = lazyReq('gulp-connect');
     
 
-var sourcemaps = require('gulp-sourcemaps');
 var jshint = require('gulp-jshint');
 
 // Lint Task
@@ -36,17 +35,15 @@ gulp.task('sass', function() {
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-    return gulp.src(['src/app.js' , 'src/api.js' , 'src/**/*.js']).pipe(sourcemaps.init())
+    return gulp.src(['src/app.js' , 'src/api.js' , 'src/**/*.js'])
             .pipe(concat()('app.js'))
-            .pipe(sourcemaps.write(''))
             .pipe(gulp.dest('dist'));
 });
 
 //Concatenate & Minify JS
 gulp.task('css', function() {
-    return gulp.src(['src/css/**/*.css']).pipe(sourcemaps.init())
+    return gulp.src(['src/css/**/*.css'])
             .pipe(concat()('css/style.css'))
-            .pipe(sourcemaps.write(''))
             .pipe(gulp.dest('dist'));
 });
 
